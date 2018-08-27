@@ -1,0 +1,57 @@
+﻿@model Contact
+@{
+    ViewData["Title"] = ViewBag.CreateMode ? "Create" : "Edit";
+}
+
+@Html.Partial("_HeaderPartial")
+
+<div class="container">
+    <h3 class="text-center">Create Lead</h3>
+    <form asp-controller="Contact" asp-action="@(ViewBag.CreateMode ? "Create" : "Edit")" method="post">
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3 total-data">
+                <div class="form-group">
+                    <label class="control-label" asp-for="@Model.Company"></label>
+                    <input class="form-control" placeholder="Enter Title" asp-for="@Model.Company" />
+                    <span class="text-danger" asp-validation-for="@Model.Company"></span>
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-6">
+                        <label class="control-label" asp-for="@Model.Email"></label>
+                        <input class="form-control" placeholder="Enter Email" asp-for="@Model.Email" />
+                        <span class="text-danger" asp-validation-for="@Model.Email"></span>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label class="control-label" asp-for="@Model.Phone"></label>
+                        <input class="form-control" placeholder="Enter Phone" asp-for="@Model.Phone" />
+                        <span class="text-danger" asp-validation-for="@Model.Phone"></span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-6">
+                        <label class="control-label" asp-for="@Model.Status"></label>
+                        <input class="form-control" placeholder="Enter Status" asp-for="@Model.Status" />
+                        <span class="text-danger" asp-validation-for="@Model.Status"></span>
+                    </div>
+
+                    <div class="form-group col-md-6">
+                        <label class="control-label" asp-for="@Model.Country"></label>
+                        <select class="form-control" asp-for="@Model.Country" asp-items="@Html.GetEnumSelectList<Contact.CountryName>()"></select>
+                        <span class="text-danger" asp-validation-for="@Model.Country"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label" asp-for="@Model.Description"></label>
+                    <textarea style="height: 13rem;" class="form-control" placeholder="Enter Something" asp-for="@Model.Description"></textarea>
+                    <span class="text-danger" asp-validation-for="@Model.Description"></span>
+                </div>
+                <button type="reset" class="btn btn-primary pull-left">Reset</button>
+                <button type="submit" class="btn btn-primary pull-right">@(ViewBag.CreateMode ? "Create" : "Edit")</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+}

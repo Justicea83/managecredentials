@@ -1,0 +1,14 @@
+﻿@using Microsoft.AspNetCore.Http
+@inject IHttpContextAccessor HttpContextAccessor
+@{
+    var sessionData = HttpContextAccessor.HttpContext.Session.GetString("Success");
+}
+@if (sessionData != null)
+{
+    <div class="Lead-alerts-custom">
+        <div class="alert alert-success alert-dismissible">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            <strong>Success! <span class="fa fa-check-circle"></span></strong> <br /> @sessionData 
+        </div>
+    </div>
+}

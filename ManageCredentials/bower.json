@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "bootstrap": "3.3.7",
+    "jQuery": "3.3.1",
+    "fontawesome": "5.0.13"
+  },
+  "name": "myproject"
+}
